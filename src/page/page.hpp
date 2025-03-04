@@ -9,12 +9,15 @@ class Page {
 		std::string _description;
 	
 	public :
-		Page();
+		//!CONSTRUCTORS
+		Page(); 
 		Page(std::string name);
 		Page(std::string name, std::string description);
-				
 		~Page();
 		
+		//?FUNCTIONS
+		
+		//?GETTERS
 		std::string name();
 		std::string description();
 		
