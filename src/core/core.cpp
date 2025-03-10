@@ -24,3 +24,7 @@ void Core::loop(){
         _window.display();
     }
 }
+
+void	Core::addPage(const	Page& newPage) {
+    _pages.push_back(newPage);
+}

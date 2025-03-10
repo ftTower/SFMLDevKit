@@ -2,12 +2,15 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include "../page/page.hpp"
 
+class Page;
 class Core {
 	
 	private :
 		sf::RenderWindow _window;
-		
+		std::vector<Page> _pages;
 	
 	
 	public :
@@ -17,6 +20,8 @@ class Core {
 		
 		//?FUNCTIONS
 		void	loop();
+		
+		void	addPage(const	Page& newPage);
 		
 		//?GETTERS
 		const sf::RenderWindow &window() const;
