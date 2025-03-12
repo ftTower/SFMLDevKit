@@ -4,26 +4,26 @@
 #include "../core/core.hpp"
 
 class AElement {
-protected:
+	protected:
 		std::vector<sf::CircleShape> 	_circles;
 		std::vector<sf::RectangleShape> _rectangles;
 		std::vector<sf::Text> 			_texts;
 		std::vector<sf::VertexArray> 	_lines;
 		
-public:
+	public:
 		//!CONSTRUCTORS
-		AElement();
+					AElement();
 		
-		virtual ~AElement();
+		virtual 	~AElement();
 		
 		//?FUNCTIONS
 		virtual void displayElement() = 0;
 	
 		//?GETTERS
-		const std::vector<sf::CircleShape> 	&circles() const;
-		const std::vector<sf::RectangleShape> &rectangles() const;
+		const std::vector<sf::CircleShape> 		&circles() const;
+		const std::vector<sf::RectangleShape> 	&rectangles() const;
 		const std::vector<sf::Text> 			&texts() const;
-		const std::vector<sf::VertexArray> 	&lines() const;
+		const std::vector<sf::VertexArray> 		&lines() const;
 		
 		//?SETTERS
 		void							addCircle(sf::CircleShape  &Circle);
