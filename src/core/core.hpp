@@ -4,8 +4,13 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
-#include "../page/page.hpp"
 
+#include "../page/page.hpp"
+//#include "../elements/AElement.hpp"
+//#include "../elements/button.hpp"
+
+class AElement;
+class Button;
 class Page;
 class Core {
 	
@@ -21,7 +26,7 @@ class Core {
 		~Core();
 		
 		//?SETTERS
-		void	addPage(const	Page& newPage);
+		void	addPage(Page& newPage);
 		
 		//?GETTERS
 		const sf::RenderWindow &window() const;

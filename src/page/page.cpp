@@ -24,14 +24,22 @@ void	Page::displayElements() {
 }
 
 //?GETTERS
-std::string Page::name() {
+std::string &Page::name() {
 	return (_name);
 }
 
-std::string Page::description() {
+std::string &Page::description() {
 	return (_description);
 }
 
-std::vector<AElement*> Page::elements() {
+std::vector<AElement*> &Page::elements() {
 	return (_elements);
+}
+
+//?SETTERS
+
+void	Page::addElement(AElement *newElement) {
+	if (!newElement)
+		throw(std::runtime_error("FAILED TO ADD NULL ELEMENT"));
+	_elements.push_back(newElement);
 }

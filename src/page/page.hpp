@@ -26,7 +26,10 @@ class Page {
 		void	displayElements();
 		
 		//?GETTERS
-		std::string name();
-		std::string description();
-		std::vector<AElement*> elements();
+		std::string &name();
+		std::string &description();
+		std::vector<AElement*> &elements();
+		
+		//?SETTERS
+		void	addElement(AElement *newElement);
 };

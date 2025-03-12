@@ -5,7 +5,7 @@ NAME = SFMLDevKit
 CXX = g++
 
 # Options de compilation
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror 
 
 # Bibliothèques SFML
 SFML_LIBS = -lsfml-graphics -lsfml-window -lsfml-system
