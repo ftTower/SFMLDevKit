@@ -23,7 +23,6 @@ class Page {
 		~Page();
 		
 		//?FUNCTIONS
-		void	displayElements();
 		
 		//?GETTERS
 		std::string &name();

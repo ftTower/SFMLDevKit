@@ -18,10 +18,7 @@ Page::~Page() {
 
 
 //?FUNCTIONS
-void	Page::displayElements() {
-	for(size_t i = 0; i < _elements.size(); i++)
-		_elements[i]->displayElement();
-}
+
 
 //?GETTERS
 std::string &Page::name() {

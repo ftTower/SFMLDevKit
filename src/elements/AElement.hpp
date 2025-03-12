@@ -17,7 +17,8 @@ class AElement {
 		virtual 	~AElement();
 		
 		//?FUNCTIONS
-		virtual void displayElement() = 0;
+		//virtual void displayElement() = 0;
+		virtual void handleEvent(const sf::Event& event) = 0;
 	
 		//?GETTERS
 		const std::vector<sf::CircleShape> 		&circles() const;

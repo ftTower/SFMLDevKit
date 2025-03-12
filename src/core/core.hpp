@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../ansi.hpp"
+#include "../utils/ansi.hpp"
 #include "../page/page.hpp"
 //#include "../elements/AElement.hpp"
 //#include "../elements/button.hpp"
@@ -34,5 +34,5 @@ class Core {
 		
 		//?FUNCTIONS
 		void	loop();
-		void	displayPage();
+		void	displayPage(const sf::Event& event);
 };
