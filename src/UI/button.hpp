@@ -13,6 +13,8 @@ class Button : public AElement {
 	
 		std::function<void()> _callback;
 		bool				  _pressed;
+		sf::Color			  _color;
+		
 	public :
 	
 		Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borderRadius);

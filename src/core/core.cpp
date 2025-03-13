@@ -1,4 +1,5 @@
 #include "../utils/headers.hpp"
+#include <iomanip>
 
 //!CONSTRUCTORS
 Core::Core(unsigned int W, unsigned int H, std::string appName) : _window(sf::VideoMode(W, H), appName), _currentPage(0) {
@@ -57,11 +58,11 @@ void Core::loop(){
         //!PAGES DISPLAY WITH NUMBERS OF ELEMENTS
         for(size_t i = 0; i < _pages.size(); i++) {
             if (_currentPage == i)
-                std::cout << ANSI_BG_GREEN << i << ANSI_RESET;
+                std::cout << ANSI_BG_GREEN << " " << i << " " << ANSI_RESET;
             else
-                std::cout << ANSI_BG_BLUE << i << ANSI_RESET;
+                std::cout << ANSI_BG_BLUE << " " << i << " " << ANSI_RESET;
             
-            std::cout << ANSI_BG_CYAN << " " <<_pages[i]->name() << ANSI_RESET << ANSI_BG_YELLOW << " " << _pages[i]->description() << ANSI_RESET << " ";
+            std::cout << ANSI_BG_CYAN << " " << std::setw(20) << _pages[i]->name() << ANSI_RESET << ANSI_BG_YELLOW << " " << std::setw(20) << _pages[i]->description() << ANSI_RESET << " ";
             for (size_t y = 0; y < _pages[i]->elements().size(); y++)
                 std::cout << ANSI_BG_GREEN << " " << ANSI_RESET << " ";
             std::cout << "/" << _pages[i]->elements().size() << "\n";

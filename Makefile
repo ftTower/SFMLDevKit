@@ -32,15 +32,15 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
 
 # Création du dossier build/ si non existant
 $(BUILD_DIR):
-	mkdir -p $(dir $(OBJ))
+	@ mkdir -p $(dir $(OBJ))
 
 # Nettoyage des fichiers objets
 clean:
-	rm -rf $(BUILD_DIR)
+	@ rm -rf $(BUILD_DIR)
 
 # Nettoyage complet
 fclean: clean
-	rm -f $(NAME)
+	@ rm -f $(NAME)
 
 # Recompile tout
 re: fclean all

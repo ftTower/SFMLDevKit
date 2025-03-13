@@ -19,17 +19,18 @@ void	Button::colorButton(sf::Color primary) {
 }
 
 Button::Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borderRadius) {
-    _rectangles.emplace_back(sf::Vector2f(size.x - 2 * borderRadius, size.y));
-    _rectangles.back().setFillColor(color);
+	_color = color;
+	_rectangles.emplace_back(sf::Vector2f(size.x - 2 * borderRadius, size.y));
+    _rectangles.back().setFillColor(_color);
     _rectangles.back().setPosition(pos.x + borderRadius, pos.y);
 
     _rectangles.emplace_back(sf::Vector2f(size.x, size.y - 2 * borderRadius));
-    _rectangles.back().setFillColor(color);
+    _rectangles.back().setFillColor(_color);
     _rectangles.back().setPosition(pos.x, pos.y + borderRadius);
 
     for (int i = 0; i < 4; ++i) {
         _circles.emplace_back(borderRadius);
-        _circles.back().setFillColor(color);
+        _circles.back().setFillColor(_color);
     }
 
     _circles[0].setPosition(pos.x, pos.y);
@@ -41,7 +42,7 @@ Button::Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borde
     _hitbox.setPosition(pos);
     _hitbox.setFillColor(sf::Color(0, 0, 0, 0));
 
-    _callback = std::bind(&Button::colorButton, this, sf::Color(128,128,128));
+    _callback = std::bind(&Button::colorButton, this, _color);
     _pressed = false;
 }
 
@@ -61,7 +62,7 @@ void Button::handleEvent(const sf::Event& event) {
 		}
 		else {
 			if (_callback) {
-				_callback = std::bind(&Button::colorButton, this, sf::Color(128,128,128));
+				_callback = std::bind(&Button::colorButton, this, _color);
 				_callback();				
 			}
 		}
