@@ -10,10 +10,10 @@ class Graph : public AElement {
 	private :
 	
 		std::function<void()> _callback;
+		
 	public :
 	
-		Graph();
-		
+		Graph(sf::Vector2f size, sf::Vector2f pos);
 		~Graph();
 		
 		void handleEvent(const sf::Event& event);
