@@ -1,12 +1,11 @@
 
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <vector>
 
-#include "../utils/ansi.hpp"
-#include "../page/page.hpp"
+
+//#include "../utils/headers.hpp"
+//#include "../utils/ansi.hpp"
+//#include "../page/page.hpp"
 //#include "../elements/AElement.hpp"
 //#include "../elements/button.hpp"
 
@@ -17,6 +16,7 @@ class Core {
 	
 	private :
 		sf::RenderWindow _window;
+		sf::Event		 _event;
 		
 		std::vector<Page> _pages;
 		size_t			  _currentPage;
@@ -34,5 +34,5 @@ class Core {
 		
 		//?FUNCTIONS
 		void	loop();
-		void	displayPage(const sf::Event& event);
+		void	displayPage();
 };

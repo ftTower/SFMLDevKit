@@ -7,19 +7,17 @@
 
 class AElement;
 
-class Button : public AElement {
+class Background : public AElement {
 
 	private :
 	
 		std::function<void()> _callback;
-		bool				  _pressed;
+		sf::Color			  _color;
 	public :
 	
-		Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borderRadius);
+		Background(sf::Vector2f windowSize, sf::Color color);
 		
-		~Button();
+		~Background();
 		
 		void handleEvent(const sf::Event& event);
-		
-		void colorButton(sf::Color primary);
 };

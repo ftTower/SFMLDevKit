@@ -1,4 +1,4 @@
-#include "./core.hpp"
+#include "../utils/headers.hpp"
 
 //!CONSTRUCTORS
 Core::Core(unsigned int W, unsigned int H, std::string appName) : _window(sf::VideoMode(W, H), appName), _currentPage(0) {
@@ -23,24 +23,33 @@ void	Core::addPage(Page& newPage) {
 void Core::loop(){
     system("clear");
     
+    //!PAGES DISPLAY WITH NUMBERS OF ELEMENTS
+    for(size_t i = 0; i < _pages.size(); i++) {
+        std::cout << ANSI_BG_BLUE << i << ANSI_RESET << ANSI_BG_CYAN << " " <<_pages[i].name() << ANSI_RESET << ANSI_BG_YELLOW << " " << _pages[i].description() << ANSI_RESET << " ";
+        for (size_t y = 0; y < _pages[i].elements().size(); y++)
+            std::cout << ANSI_BG_GREEN << " " << ANSI_RESET << " ";
+        std::cout << "/" << _pages[i].elements().size() << "\n";
+    }
+    
     if (_pages.empty()) {
         std::string error = std::string(ANSI_BG_RED) + "NO PAGES LOADED IN CORE" + std::string(ANSI_RESET);
         throw(std::runtime_error(error));
     }
     while (_window.isOpen()) {
-        sf::Event event;
-        while (_window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+        while (_window.pollEvent(_event)) {
+            if (_event.type == sf::Event::Closed)
                 _window.close();
-            else if (event.type == sf::Event::Resized) {
-                sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+            else if (_event.type == sf::Event::Resized) {
+                sf::FloatRect visibleArea(0, 0, _event.size.width, _event.size.height);
                 _window.setView(sf::View(visibleArea));
             }
         }
 
+        
         _window.clear(sf::Color::Black);
-        displayPage(event);
+        displayPage();
         _window.display();  
+        
         
         //! Ajout d'un délai pour éviter les freezes
         sf::sleep(sf::milliseconds(7)); // 144 FPS
@@ -48,7 +57,7 @@ void Core::loop(){
     }
 }
 
-void Core::displayPage(const sf::Event& event) {
+void Core::displayPage() {
     std::vector<AElement *> &elements = _pages[_currentPage].elements();
     for(size_t i = 0; i < elements.size(); i++) {
         for(size_t y = 0; y < elements[i]->circles().size(); y++)
@@ -59,6 +68,6 @@ void Core::displayPage(const sf::Event& event) {
             _window.draw(elements[i]->texts()[y]);    
         for(size_t y = 0; y < elements[i]->lines().size(); y++)
             _window.draw(elements[i]->lines()[y]);
-        elements[i]->handleEvent(event);
+        elements[i]->handleEvent(_event);
     }
 }

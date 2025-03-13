@@ -1,4 +1,4 @@
-#include "./page.hpp"
+#include "../utils/headers.hpp"
 
 //!CONSTRUCTORS
 Page::Page() : _name("no name"), _description("no description") {

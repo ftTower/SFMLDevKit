@@ -1,7 +1,8 @@
 
 #pragma once
 
-#include "../core/core.hpp"
+//#include "../core/core.hpp"
+//#include "../utils/headers.hpp"
 
 class AElement {
 	protected:
@@ -9,7 +10,7 @@ class AElement {
 		std::vector<sf::RectangleShape> _rectangles;
 		std::vector<sf::Text> 			_texts;
 		std::vector<sf::VertexArray> 	_lines;
-		
+		sf::RectangleShape				_hitbox;
 	public:
 		//!CONSTRUCTORS
 					AElement();
