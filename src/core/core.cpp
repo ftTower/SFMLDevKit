@@ -57,10 +57,10 @@ void Core::loop(){
         system("clear");
         //!PAGES DISPLAY WITH NUMBERS OF ELEMENTS
         for(size_t i = 0; i < _pages.size(); i++) {
-            if (_currentPage == i)
-                std::cout << ANSI_BG_GREEN << " " << i << " " << ANSI_RESET;
-            else
+            if (_currentPage != i)
                 std::cout << ANSI_BG_BLUE << " " << i << " " << ANSI_RESET;
+            else
+                std::cout << ANSI_BG_GREEN << " " << i << " " << ANSI_RESET;
             
             std::cout << ANSI_BG_CYAN << " " << std::setw(20) << _pages[i]->name() << ANSI_RESET << ANSI_BG_YELLOW << " " << std::setw(20) << _pages[i]->description() << ANSI_RESET << " ";
             for (size_t y = 0; y < _pages[i]->elements().size(); y++)

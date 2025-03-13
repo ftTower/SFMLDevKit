@@ -3,8 +3,12 @@
 
 Graph::Graph() {
     _rectangles.emplace_back(sf::Vector2f(100, 100));
-	_rectangles.back().setFillColor(sf::Color::Red);
+	_rectangles.back().setFillColor(sf::Color::Black);
 	_rectangles.back().setPosition(0, 0);
+
+	_rectangles.emplace_back(sf::Vector2f(90, 90));
+	_rectangles.back().setFillColor(sf::Color::White);
+	_rectangles.back().setPosition(5, 5);
 }
 
 

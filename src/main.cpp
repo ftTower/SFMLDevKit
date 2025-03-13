@@ -9,7 +9,8 @@ Page* mainPage() {
     //*BACKGROUND
     Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(64, 64, 64));
     mainPage->addElement(mainBackground);
-    
+    Graph *utils = new Graph;
+    mainPage->addElement(utils);
     ////*BUTTONS
     Button* test = new Button(sf::Color(128, 128, 128), sf::Vector2f(350, 400), sf::Vector2f(200, 100), 20);
     mainPage->addElement(test);
@@ -42,8 +43,7 @@ int main() {
                 
         
         ////*GRAPHIC
-        //Graph utils;
-        //mainPage.addElement(&utils);
+        
         
         App.addPage(*mainPage());
         App.addPage(*deuxiemePage());
