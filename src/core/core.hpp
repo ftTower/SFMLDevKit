@@ -18,7 +18,7 @@ class Core {
 		sf::RenderWindow _window;
 		sf::Event		 _event;
 		
-		std::vector<Page> _pages;
+		std::vector<Page *> _pages;
 		size_t			  _currentPage;
 	
 	public :

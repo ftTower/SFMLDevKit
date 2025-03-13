@@ -14,6 +14,13 @@ Page::Page(std::string name, std::string description) : \
 }
 
 Page::~Page() {
+	for (AElement* element : _elements) {
+		if (element) {
+			delete element;
+			element = nullptr;
+		}
+	}
+	_elements.clear();
 }
 
 

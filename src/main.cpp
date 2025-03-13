@@ -3,26 +3,50 @@
 
 #include "./utils/headers.hpp"
 
+Page* mainPage() {
+    Page* mainPage = new Page("main page", "little test");
+        
+    //*BACKGROUND
+    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(64, 64, 64));
+    mainPage->addElement(mainBackground);
+    
+    ////*BUTTONS
+    Button* test = new Button(sf::Color(128, 128, 128), sf::Vector2f(350, 400), sf::Vector2f(200, 100), 20);
+    mainPage->addElement(test);
+    
+    return mainPage;
+}
+
+Page* deuxiemePage() {
+    Page* deuxiemePage = new Page("deuxieme page");
+        
+    //*BACKGROUND
+    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(64, 64, 64));
+    deuxiemePage->addElement(mainBackground);
+    
+    ////*BUTTONS
+    Button* test = new Button(sf::Color(128, 128, 128), sf::Vector2f(350, 400), sf::Vector2f(200, 100), 20);
+    deuxiemePage->addElement(test);
+    
+    Button* test2 = new Button(sf::Color(128, 128, 128), sf::Vector2f(100, 100), sf::Vector2f(200, 100), 20);
+    deuxiemePage->addElement(test2);
+    
+    return deuxiemePage;
+}
+
 int main() {
         
     //!INITING
     try {
         Core App(700, 800, "SFMLDevKit");
                 
-        Page mainPage("main page", "little test");
         
-        //*BACKGROUND
-        Background mainBackground(sf::Vector2f(700, 800), sf::Color(64,64,64));
-        mainPage.addElement(&mainBackground);
-        ////*BUTTONS
-        Button test(sf::Color(128,128,128), sf::Vector2f(350, 400), sf::Vector2f(200, 100), 20);
-        mainPage.addElement(&test);
         ////*GRAPHIC
         //Graph utils;
         //mainPage.addElement(&utils);
         
-        App.addPage(mainPage);
-        App.addPage(mainPage);
+        App.addPage(*mainPage());
+        App.addPage(*deuxiemePage());
         
         //!RUNNING CATCH
         try {
