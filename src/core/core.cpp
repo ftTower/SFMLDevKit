@@ -7,7 +7,10 @@ Core::Core(unsigned int W, unsigned int H, std::string appName) : _window(sf::Vi
 }
 
 Core::~Core() {
-	
+    for (auto page : _pages) {
+        delete page;
+    }
+    _pages.clear();
 }
 
 //?GETTERS
@@ -23,10 +26,8 @@ void	Core::addPage(Page& newPage) {
 //?FUNCTIONS
 void Core::loop(){
     
-    if (_pages.empty()) {
-        std::string error = std::string(ANSI_BG_RED) + "NO PAGES LOADED IN CORE" + std::string(ANSI_RESET);
-        throw(std::runtime_error(error));
-    }
+    if (_pages.empty()) 
+        throw(std::runtime_error("NO PAGES LOADED IN CORE"));
     while (_window.isOpen()) {
         while (_window.pollEvent(_event)) {
             if (_event.type == sf::Event::Closed)
@@ -51,6 +52,7 @@ void Core::loop(){
 
         
         _window.clear(sf::Color::Black);
+        
         displayPage();
         _window.display();  
         
@@ -62,12 +64,12 @@ void Core::loop(){
             else
                 std::cout << ANSI_BG_GREEN << " " << i << " " << ANSI_RESET;
             
-            std::cout << ANSI_BG_CYAN << " " << std::setw(20) << _pages[i]->name() << ANSI_RESET << ANSI_BG_YELLOW << " " << std::setw(20) << _pages[i]->description() << ANSI_RESET << " ";
+            std::cout << ANSI_BG_CYAN << " " << std::setw(20) << _pages[i]->name() << ANSI_RESET << ANSI_BG_YELLOW << " " << std::setw(20) << _pages[i]->description() << " |" << ANSI_RESET;
             for (size_t y = 0; y < _pages[i]->elements().size(); y++)
-                std::cout << ANSI_BG_GREEN << " " << ANSI_RESET << " ";
+                std::cout << ANSI_BG_GREEN << " |" << ANSI_RESET;
             std::cout << "/" << _pages[i]->elements().size() << "\n";
         }
-        
+        std::cout << "\n";
         
         //! Ajout d'un délai pour éviter les freezes
         sf::sleep(sf::milliseconds(7)); // 144 FPS

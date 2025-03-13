@@ -18,32 +18,41 @@ void	Button::colorButton(sf::Color primary) {
 		
 }
 
-Button::Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borderRadius) {
+Button::Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borderRadius, const std::string& text, const sf::Font& font, unsigned int characterSize) {
 	_color = color;
 	_rectangles.emplace_back(sf::Vector2f(size.x - 2 * borderRadius, size.y));
-    _rectangles.back().setFillColor(_color);
-    _rectangles.back().setPosition(pos.x + borderRadius, pos.y);
+	_rectangles.back().setFillColor(_color);
+	_rectangles.back().setPosition(pos.x + borderRadius, pos.y);
 
-    _rectangles.emplace_back(sf::Vector2f(size.x, size.y - 2 * borderRadius));
-    _rectangles.back().setFillColor(_color);
-    _rectangles.back().setPosition(pos.x, pos.y + borderRadius);
+	_rectangles.emplace_back(sf::Vector2f(size.x, size.y - 2 * borderRadius));
+	_rectangles.back().setFillColor(_color);
+	_rectangles.back().setPosition(pos.x, pos.y + borderRadius);
 
-    for (int i = 0; i < 4; ++i) {
-        _circles.emplace_back(borderRadius);
-        _circles.back().setFillColor(_color);
-    }
+	for (int i = 0; i < 4; ++i) {
+		_circles.emplace_back(borderRadius);
+		_circles.back().setFillColor(_color);
+	}
 
-    _circles[0].setPosition(pos.x, pos.y);
-    _circles[1].setPosition(pos.x + size.x - 2 * borderRadius, pos.y);
-    _circles[2].setPosition(pos.x, pos.y + size.y - 2 * borderRadius);
-    _circles[3].setPosition(pos.x + size.x - 2 * borderRadius, pos.y + size.y - 2 * borderRadius);
+	_circles[0].setPosition(pos.x, pos.y);
+	_circles[1].setPosition(pos.x + size.x - 2 * borderRadius, pos.y);
+	_circles[2].setPosition(pos.x, pos.y + size.y - 2 * borderRadius);
+	_circles[3].setPosition(pos.x + size.x - 2 * borderRadius, pos.y + size.y - 2 * borderRadius);
 
-    _hitbox.setSize(size);
-    _hitbox.setPosition(pos);
-    _hitbox.setFillColor(sf::Color(0, 0, 0, 0));
+	_hitbox.setSize(size);
+	_hitbox.setPosition(pos);
+	_hitbox.setFillColor(sf::Color(0, 0, 0, 0));
 
-    _callback = std::bind(&Button::colorButton, this, _color);
-    _pressed = false;
+	sf::Text textElement;
+	textElement.setFont(font);
+	textElement.setString(text);
+	textElement.setCharacterSize(characterSize);
+	textElement.setFillColor(sf::Color::Black);
+	sf::FloatRect textBounds = textElement.getLocalBounds();
+	textElement.setPosition(pos.x + (size.x - textBounds.width) / 2, pos.y + (size.y - textBounds.height) / 2 - textBounds.top);
+	_texts.push_back(textElement);
+
+	_callback = std::bind(&Button::colorButton, this, _color);
+	_pressed = false;
 }
 
 //sf::Color(128,128,128), 

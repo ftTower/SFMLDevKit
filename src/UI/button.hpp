@@ -17,7 +17,7 @@ class Button : public AElement {
 		
 	public :
 	
-		Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borderRadius);
+		Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borderRadius, const std::string& text, const sf::Font& font, unsigned int characterSize);
 		
 		~Button();
 		
