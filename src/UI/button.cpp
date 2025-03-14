@@ -51,7 +51,7 @@ Button::Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borde
 	textElement.setPosition(pos.x + (size.x - textBounds.width) / 2, pos.y + (size.y - textBounds.height) / 2 - textBounds.top);
 	_texts.push_back(textElement);
 
-	_callback = std::bind(&Button::colorButton, this, _color);
+	_hover = std::bind(&Button::colorButton, this, _color);
 	_pressed = false;
 }
 
@@ -64,15 +64,15 @@ void Button::handleEvent(const sf::Event& event) {
 	if (event.type == sf::Event::MouseMoved) {
 		sf::Vector2f mousePos(event.mouseMove.x, event.mouseMove.y);
 		if (_hitbox.getGlobalBounds().contains(mousePos)) {
-			if (_callback) {
-				_callback = std::bind(&Button::colorButton, this, sf::Color(192,192,192));
-				_callback();
+			if (_hover) {
+				_hover = std::bind(&Button::colorButton, this, sf::Color(192,192,192));
+				_hover();
 			}
 		}
 		else {
-			if (_callback) {
-				_callback = std::bind(&Button::colorButton, this, _color);
-				_callback();				
+			if (_hover) {
+				_hover = std::bind(&Button::colorButton, this, _color);
+				_hover();				
 			}
 		}
 	}

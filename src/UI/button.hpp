@@ -11,7 +11,7 @@ class Button : public AElement {
 
 	private :
 	
-		std::function<void()> _callback;
+		std::function<void()> _hover;
 		bool				  _pressed;
 		sf::Color			  _color;
 		

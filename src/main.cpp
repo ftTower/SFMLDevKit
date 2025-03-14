@@ -46,23 +46,29 @@ Page* settingsPage() {
 Page* mainPage() {
     Page* mainPage = new Page("accueil");
         
-    //*BACKGROUND
-    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(64, 64, 64));
+    //* BACKGROUND
+    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(50, 50, 50));
     mainPage->addElement(mainBackground);
-    Graph *utils = new Graph(sf::Vector2f(680, 400), sf::Vector2f(10, 50));
-    mainPage->addElement(utils);
     
-    ////*BUTTONS
+    
     static sf::Font font;
     if (!font.loadFromFile("./fonts/Movistar Text Regular.ttf")) {
         throw(std::runtime_error("failed to load Font"));
     }
-    Button* test = new Button(sf::Color(128, 128, 128), sf::Vector2f(50, 500), sf::Vector2f(180, 80), 20, "test", font, 30);
-    mainPage->addElement(test);
-    Button* test2 = new Button(sf::Color(128, 128, 128), sf::Vector2f(250, 500), sf::Vector2f(180, 80), 20, "test", font, 30);
-    mainPage->addElement(test2);
-    Button* test3 = new Button(sf::Color(128, 128, 128), sf::Vector2f(450, 500), sf::Vector2f(180, 80), 20, "test", font, 30);
-    mainPage->addElement(test3);
+    
+    //* BUTTONS
+    sf::Vector2f buttonSize(200, 80);
+    sf::Color buttonColor(100, 100, 100);
+    int borderRadius = 20;
+    
+    Button* btnStart = new Button(buttonColor, sf::Vector2f(250, 350), buttonSize, borderRadius, "Commencer", font, 30);
+    mainPage->addElement(btnStart);
+    
+    Button* btnSettings = new Button(buttonColor, sf::Vector2f(250, 450), buttonSize, borderRadius, "Parametres", font, 30);
+    mainPage->addElement(btnSettings);
+    
+    Button* btnQuit = new Button(buttonColor, sf::Vector2f(250, 550), buttonSize, borderRadius, "Quitter", font, 30);
+    mainPage->addElement(btnQuit);
     
     return mainPage;
 }
