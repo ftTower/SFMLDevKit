@@ -12,6 +12,7 @@ Graph::Graph(sf::Vector2f size, sf::Vector2f pos) {
 	
 	//! GRID
 	for (size_t i = 0; i < size.x; i += size.x / 10) {
+		if (i + size.x / 10 >= size.x) break;
 		_lines.push_back(sf::VertexArray(sf::Lines, 2));
 		_lines.back()[0].position = sf::Vector2f(pos.x + i + 60, pos.y);
 		_lines.back()[1].position = sf::Vector2f(pos.x + i + 60, pos.y + size.y);
@@ -20,13 +21,13 @@ Graph::Graph(sf::Vector2f size, sf::Vector2f pos) {
 	}
 
 	for (size_t i = 0; i < size.y; i += size.y / 10) {
+		if (i + size.y / 10 >= size.y) break;
 		_lines.push_back(sf::VertexArray(sf::Lines, 2));
 		_lines.back()[0].position = sf::Vector2f(pos.x, pos.y + i);
 		_lines.back()[1].position = sf::Vector2f(pos.x + size.x, pos.y + i);
 		_lines.back()[0].color = sf::Color::Black;
 		_lines.back()[1].color = sf::Color::Black;
 	}
-	
 }
 
 
