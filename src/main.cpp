@@ -50,6 +50,13 @@ Page* mainPage() {
     Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(50, 50, 50));
     mainPage->addElement(mainBackground);
     
+    //* SIDEBAR
+    SideBar* sidebar = new SideBar(sf::Vector2f(50, 800) , sf::Color::Black);
+    mainPage->addElement(sidebar);
+    
+    //* BOX
+    //Box* mainBox = new Box(sf::Vector2f(100, 100), sf::Vector2f(100, 100),sf::Color::White);
+    //mainPage->addElement(mainBox);
     
     static sf::Font font;
     if (!font.loadFromFile("./fonts/Movistar Text Regular.ttf")) {
@@ -99,14 +106,14 @@ int main() {
         
     //!INITING
     try {
-        Core App(700, 800, "SFMLDevKit");
+        Core App(WINDOW_W, WINDOW_H, "SFMLDevKit");
                 
         
         ////*GRAPHIC
         
         
         App.addPage(*mainPage());
-        App.addPage(*deuxiemePage());
+        //App.addPage(*deuxiemePage());
         App.addPage(*settingsPage());
         App.addPage(*graphDemoPage());
         
