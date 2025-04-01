@@ -8,10 +8,10 @@ Loading::Loading(sf::Vector2f windowSize) {
 	_rectangles[0].setFillColor(sf::Color(128, 128, 128, 128));
 	
 	const int numCircles = 12; // Number of circles in the loading animation
-	const float radius = 15.0f; // Radius of each circle
+	const float radius = 8.0f; // Radius of each circle
 	const float centerX = windowSize.x / 2.0f;
 	const float centerY = windowSize.y / 2.0f;
-	const float circleRadius = 100.0f; // Radius of the circular path
+	const float circleRadius = 50.0f; // Radius of the circular path
 
 	for (int i = 0; i < numCircles; ++i) {
 		float angle = (2 * M_PI / numCircles) * i;

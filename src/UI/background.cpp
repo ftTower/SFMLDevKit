@@ -18,8 +18,5 @@ Background::~Background() {
 //}
 
 void Background::handleEvent(const sf::Event& event) {
-	if (event.type == sf::Event::Resized) {
-		_rectangles.emplace_back(sf::Vector2f(event.size.width, event.size.height));
-		_rectangles.back().setFillColor(_color);
-	}
+	(void)event;
 }

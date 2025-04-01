@@ -40,7 +40,7 @@ Button::Button(sf::Color color, sf::Vector2f pos, sf::Vector2f size, float borde
 
 	_hitbox.setSize(size);
 	_hitbox.setPosition(pos);
-	_hitbox.setFillColor(sf::Color(0, 0, 0, 0));
+	_hitbox.setFillColor(sf::Color(0, 0, 0, 100));
 
 	sf::Text textElement;
 	textElement.setFont(font);

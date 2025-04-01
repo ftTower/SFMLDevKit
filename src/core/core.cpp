@@ -78,16 +78,49 @@ void Core::loop(){
 }
 
 void Core::displayPage() {
+    sf::Vector2u windowSize = _window.getSize();
+    float scaleX = static_cast<float>(windowSize.x) / WINDOW_W;
+    float scaleY = static_cast<float>(windowSize.y) / WINDOW_H;
+    
     std::vector<AElement *> &elements = _pages[_currentPage]->elements();
-    for(size_t i = 0; i < elements.size(); i++) {
-        for(size_t y = 0; y < elements[i]->circles().size(); y++)
-            _window.draw(elements[i]->circles()[y]);
-        for(size_t y = 0; y < elements[i]->rectangles().size(); y++)
-            _window.draw(elements[i]->rectangles()[y]);
-        for(size_t y = 0; y < elements[i]->texts().size(); y++)
-            _window.draw(elements[i]->texts()[y]);    
-        for(size_t y = 0; y < elements[i]->lines().size(); y++)
-            _window.draw(elements[i]->lines()[y]);
+    for (size_t i = 0; i < elements.size(); i++) {
         elements[i]->handleEvent(_event);
+
+        for (size_t y = 0; y < elements[i]->circles().size(); y++) {
+            sf::CircleShape circle = elements[i]->circles()[y];
+            circle.setScale(scaleX, scaleY);
+            circle.setPosition(circle.getPosition().x * scaleX, circle.getPosition().y * scaleY);
+            _window.draw(circle);
+        }
+
+        for (size_t y = 0; y < elements[i]->rectangles().size(); y++) {
+            sf::RectangleShape rectangle = elements[i]->rectangles()[y];
+            rectangle.setScale(scaleX, scaleY);
+            rectangle.setPosition(rectangle.getPosition().x * scaleX, rectangle.getPosition().y * scaleY);
+            _window.draw(rectangle);
+        }
+
+        for (size_t y = 0; y < elements[i]->texts().size(); y++) {
+            sf::Text text = elements[i]->texts()[y];
+            text.setScale(scaleX, scaleY);
+            text.setPosition(text.getPosition().x * scaleX, text.getPosition().y * scaleY);
+            _window.draw(text);
+        }
+
+        for (size_t y = 0; y < elements[i]->lines().size(); y++) {
+            sf::VertexArray line = elements[i]->lines()[y];
+            for (size_t p = 0; p < line.getVertexCount(); p++) {
+                line[p].position.x *= scaleX;
+                line[p].position.y *= scaleY;
+            }
+            _window.draw(line);
+        }
+        
+            sf::RectangleShape hit = sf::RectangleShape(elements[i]->hitbox());
+            //hit.setScale(scaleX, scaleY);
+            //hit.setPosition((elements[i]->hitbox().getPosition().x) * scaleX, 
+            //                (elements[i]->hitbox().getPosition().y) * scaleY);
+            _window.draw(hit);
+        
     }
 }

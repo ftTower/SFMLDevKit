@@ -46,17 +46,4 @@ void SideBar::handleEvent(const sf::Event& event) {
 		}
 		
 	}
-	
-	
-	if (event.type == sf::Event::Resized) {
-		if (!_rectangles.empty()) {
-			for (size_t i = 0; i < _rectangles.size(); i++)
-				_rectangles[i].setSize(sf::Vector2f(_rectangles[i].getSize().x, event.size.height));
-			
-			
-			//_rectangles.emplace_back(sf::Vector2f(_rectangles.back().getSize().x, event.size.height));
-			_hitbox.setSize(sf::Vector2f(_rectangles.back().getSize().x, event.size.height));
-			_rectangles.back().setFillColor(_color);
-		}
-	}
 }

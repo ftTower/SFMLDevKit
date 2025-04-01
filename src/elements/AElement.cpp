@@ -26,6 +26,11 @@ const std::vector<sf::VertexArray> 	&AElement::lines() const{
 	return (_lines);
 }
 
+const sf::RectangleShape				&AElement::hitbox() const {
+	return (_hitbox);
+}
+
+
 //?SETTERS
 
 void							AElement::addCircle(sf::CircleShape &Circle) {

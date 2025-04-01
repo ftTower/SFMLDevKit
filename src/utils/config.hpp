@@ -1,3 +1,3 @@
 
-#define WINDOW_H 700
-#define WINDOW_W 600
+#define WINDOW_W 700
+#define WINDOW_H 800

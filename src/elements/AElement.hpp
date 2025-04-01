@@ -18,7 +18,6 @@ class AElement {
 		virtual 	~AElement();
 		
 		//?FUNCTIONS
-		//virtual void displayElement() = 0;
 		virtual void handleEvent(const sf::Event& event) = 0;
 	
 		//?GETTERS
@@ -26,6 +25,7 @@ class AElement {
 		const std::vector<sf::RectangleShape> 	&rectangles() const;
 		const std::vector<sf::Text> 			&texts() const;
 		const std::vector<sf::VertexArray> 		&lines() const;
+		const sf::RectangleShape				&hitbox() const;
 		
 		//?SETTERS
 		void							addCircle(sf::CircleShape  &Circle);
