@@ -7,7 +7,7 @@ Page* graphDemoPage() {
     Page* graphDemoPage = new Page("graphiques");
     
     //*BACKGROUND
-    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(30, 30, 30));
+    Background* mainBackground = new Background(sf::Vector2f(WINDOW_W, WINDOW_H), sf::Color(30, 30, 30));
     graphDemoPage->addElement(mainBackground);
     
     Graph* demoGraph1 = new Graph(sf::Vector2f(600, 300), sf::Vector2f(50, 100));
@@ -23,7 +23,7 @@ Page* settingsPage() {
     Page* settingsPage = new Page("parametres");
     
     //*BACKGROUND
-    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(50, 50, 50));
+    Background* mainBackground = new Background(sf::Vector2f(WINDOW_W, WINDOW_H), sf::Color(50, 50, 50));
     settingsPage->addElement(mainBackground);
     
     static sf::Font font;
@@ -47,7 +47,7 @@ Page* mainPage() {
     Page* mainPage = new Page("accueil");
         
     //* BACKGROUND
-    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(50, 50, 50));
+    Background* mainBackground = new Background(sf::Vector2f(WINDOW_W, WINDOW_H), sf::Color(50, 50, 50));
     mainPage->addElement(mainBackground);
     
     ////* SIDEBAR
@@ -85,7 +85,7 @@ Page* complexPage() {
     Page* complexPage = new Page("complexe");
 
     //* BACKGROUND
-    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(70, 70, 70));
+    Background* mainBackground = new Background(sf::Vector2f(WINDOW_W, WINDOW_H), sf::Color(70, 70, 70));
     complexPage->addElement(mainBackground);
 
     static sf::Font font;
