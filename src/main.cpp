@@ -50,9 +50,9 @@ Page* mainPage() {
     Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(50, 50, 50));
     mainPage->addElement(mainBackground);
     
-    //* SIDEBAR
-    SideBar* sidebar = new SideBar(sf::Vector2f(50, 800) , sf::Color::Black);
-    mainPage->addElement(sidebar);
+    ////* SIDEBAR
+    //SideBar* sidebar = new SideBar(sf::Vector2f(50, 800) , sf::Color::Black);
+    //mainPage->addElement(sidebar);
     
     //* BOX
     //Box* mainBox = new Box(sf::Vector2f(100, 100), sf::Vector2f(100, 100),sf::Color::White);
@@ -62,6 +62,7 @@ Page* mainPage() {
     if (!font.loadFromFile("./fonts/Movistar Text Regular.ttf")) {
         throw(std::runtime_error("failed to load Font"));
     }
+    
     
     //* BUTTONS
     sf::Vector2f buttonSize(200, 80);
@@ -80,26 +81,46 @@ Page* mainPage() {
     return mainPage;
 }
 
-Page* deuxiemePage() {
-    Page* deuxiemePage = new Page("deuxieme page");
-        
-    //*BACKGROUND
-    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(64, 64, 64));
-    deuxiemePage->addElement(mainBackground);
-    
-    ////*BUTTONS
-    
+Page* complexPage() {
+    Page* complexPage = new Page("complexe");
+
+    //* BACKGROUND
+    Background* mainBackground = new Background(sf::Vector2f(700, 800), sf::Color(70, 70, 70));
+    complexPage->addElement(mainBackground);
+
     static sf::Font font;
     if (!font.loadFromFile("./fonts/Movistar Text Regular.ttf")) {
         throw(std::runtime_error("failed to load Font"));
     }
-    Button* test = new Button(sf::Color(128, 128, 128), sf::Vector2f(350, 400), sf::Vector2f(200, 100), 20, "test", font, 30);
-    deuxiemePage->addElement(test);
+
     
-    Button* test2 = new Button(sf::Color(128, 128, 128), sf::Vector2f(100, 100), sf::Vector2f(200, 100), 20, "test", font, 30);
-    deuxiemePage->addElement(test2);
+    //* BOXES
+    Box* box1 = new Box(sf::Vector2f(100, 300), sf::Vector2f(200, 100), sf::Color(150, 150, 150));
+    complexPage->addElement(box1);
+
+    Box* box2 = new Box(sf::Vector2f(400, 300), sf::Vector2f(200, 100), sf::Color(180, 180, 180));
+    complexPage->addElement(box2);
+
+    //* BUTTONS
+    sf::Vector2f buttonSize(150, 50);
+    sf::Color buttonColor(120, 120, 120);
+    int borderRadius = 15;
+
+    Button* btn1 = new Button(buttonColor, sf::Vector2f(100, 150), buttonSize, borderRadius, "Button 1", font, 20);
+    complexPage->addElement(btn1);
+
+    Button* btn2 = new Button(buttonColor, sf::Vector2f(275, 150), buttonSize, borderRadius, "Button 2", font, 20);
+    complexPage->addElement(btn2);
+
+    Button* btn3 = new Button(buttonColor, sf::Vector2f(450, 150), buttonSize, borderRadius, "Button 3", font, 20);
+    complexPage->addElement(btn3);
+
     
-    return deuxiemePage;
+    //* LOADING
+    Loading* loading = new Loading(sf::Vector2f(WINDOW_W, WINDOW_H));
+    complexPage->addElement(loading);
+
+    return complexPage;
 }
 
 int main() {
@@ -113,7 +134,7 @@ int main() {
         
         
         App.addPage(*mainPage());
-        //App.addPage(*deuxiemePage());
+        App.addPage(*complexPage()); 
         App.addPage(*settingsPage());
         App.addPage(*graphDemoPage());
         

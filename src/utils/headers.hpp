@@ -15,5 +15,6 @@
 #include "../UI/background.hpp"
 #include "../UI/box.hpp"
 #include "../UI/sidebar.hpp"
+#include "../UI/loading.hpp"
 #include "../elements/AElement.hpp"
 

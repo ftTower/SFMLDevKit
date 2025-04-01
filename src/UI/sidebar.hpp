@@ -11,6 +11,7 @@ class SideBar : public AElement {
 
 	private :
 	
+		bool				  _mouseIn;
 		std::function<void()> _callback;
 		sf::Color			  _color;
 		sf::Vector2f		  _sideBarSize;
