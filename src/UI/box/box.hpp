@@ -2,12 +2,12 @@
 #pragma once
 
 //#include "../utils/headers.hpp"
-#include "../elements/AElement.hpp"
+#include "../../elements/AElement.hpp"
 #include <functional>
 
 class AElement;
 
-class Background : public AElement {
+class Box : public AElement {
 
 	private :
 	
@@ -15,9 +15,9 @@ class Background : public AElement {
 		sf::Color			  _color;
 	public :
 	
-		Background(sf::Vector2f windowSize, sf::Color color);
+		Box(sf::Vector2f boxSize, sf::Vector2f pos, sf::Color color);
 		
-		~Background();
+		~Box();
 		
 		void handleEvent(const sf::Event& event);
 };

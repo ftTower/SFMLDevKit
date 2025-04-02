@@ -1,5 +1,5 @@
 
-#include "../utils/headers.hpp"
+#include "../../utils/headers.hpp"
 
 Graph::Graph(sf::Vector2f size, sf::Vector2f pos) {
 	_rectangles.emplace_back(sf::Vector2f(size.x, size.y));

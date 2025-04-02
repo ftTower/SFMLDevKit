@@ -1,5 +1,5 @@
 
-#include "../utils/headers.hpp"
+#include "../../utils/headers.hpp"
 
 Background::Background(sf::Vector2f windowSize, sf::Color color) {
     _color = color;

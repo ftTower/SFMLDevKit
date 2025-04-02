@@ -2,25 +2,22 @@
 #pragma once
 
 //#include "../utils/headers.hpp"
-#include "../elements/AElement.hpp"
+#include "../../elements/AElement.hpp"
 #include <functional>
 
 class AElement;
 
-class SideBar : public AElement {
+class Background : public AElement {
 
 	private :
 	
-		bool				  _mouseIn;
 		std::function<void()> _callback;
 		sf::Color			  _color;
-		sf::Vector2f		  _sideBarSize;
-		
 	public :
 	
-		SideBar(sf::Vector2f SideBarSize, sf::Color color);
+		Background(sf::Vector2f windowSize, sf::Color color);
 		
-		~SideBar();
+		~Background();
 		
 		void handleEvent(const sf::Event& event);
 };

@@ -1,5 +1,5 @@
 
-#include "../utils/headers.hpp"
+#include "../../utils/headers.hpp"
 #include <cmath>
 #define _USE_MATH_DEFINES
 
@@ -7,8 +7,8 @@ Loading::Loading(sf::Vector2f windowSize) {
     _rectangles.push_back(sf::RectangleShape(windowSize));
 	_rectangles[0].setFillColor(sf::Color(128, 128, 128, 128));
 	
-	const int numCircles = 12; // Number of circles in the loading animation
-	const float radius = 8.0f; // Radius of each circle
+	const int numCircles = 10; // Number of circles in the loading animation
+	const float radius = 10.0f; // Radius of each circle
 	const float centerX = windowSize.x / 2.0f;
 	const float centerY = windowSize.y / 2.0f;
 	const float circleRadius = 50.0f; // Radius of the circular path
