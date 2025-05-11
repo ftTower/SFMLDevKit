@@ -9,6 +9,10 @@ SFMLDevKit est une librairie facilitant le développement d'applications utilisa
 
 ## Installation
 
+```
+chmod +x launcher.sh && ./launcher.sh
+```
+
 ### Prérequis
 - SFML (https://www.sfml-dev.org/download.php)
 - Un compilateur compatible C++98
